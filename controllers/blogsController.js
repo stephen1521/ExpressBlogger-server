@@ -63,7 +63,6 @@ async function getOneBlog(req, res, next) {
 
 async function updateOneBlog(req,res){
     const entryId = req.params.id;
-    console.log(req.body);
     try {
         await Blog.findByIdAndUpdate(entryId, req.body);
     } catch (err) {
