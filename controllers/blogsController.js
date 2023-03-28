@@ -1,7 +1,6 @@
 const Blog = require('../models/Blogs');
 
 async function getAllBlogs(req, res) {
-
     //query blogs 
     try {
       const allBlogs = await Blog.find({});

@@ -6,7 +6,7 @@ const blogSchema = new mongoose.Schema({
     text: String,
     author: String,
     categories: [String],
-    _id: {type: String, default: uuid4()},
+    _id: {type: String, default: uuid4},
     createdAt: {type: Date, default: Date.now},
     lastModified: {type: Date, default: Date.now}
 });

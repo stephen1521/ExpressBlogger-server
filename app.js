@@ -4,14 +4,12 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const cors = require('cors');
+//loads the contents of config.env
+require("dotenv").config()
 
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 const blogsRouter = require('./routes/blogs');
-
-
-//loads the contents of config.env
-require("dotenv").config();
 
 // const { mongoConnect } = require('./mongo.js');
 // mongoConnect();
