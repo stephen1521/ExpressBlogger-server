@@ -80,7 +80,7 @@ async function message (req, res) {
 	  	if (!verifiedTokenPayload) {
 			return res.json({
 		  		success: false,
-		  		message: false
+		  		message: 'ID token could not be verified'
 			});
 	  	}
 	  	const userData = verifiedTokenPayload.userData;
