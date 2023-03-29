@@ -72,8 +72,41 @@ async function login (req, res) {
   	}
 };
 
+async function message (req, res) {
+	try {
+	  	const tokenHeaderKey = process.env.TOKEN_HEADER_KEY;
+	  	const token = req.header(tokenHeaderKey);
+		const verifiedTokenPayload = verifyToken(token)
+	  	if (!verifiedTokenPayload) {
+			return res.json({
+		  		success: false,
+		  		message: false
+			});
+	  	}
+	  	const userData = verifiedTokenPayload.userData;
+	  	if (userData && userData.scope === "user") {
+			return res.json({
+				success: true,
+		  		message: true
+			});
+	  	}
+		if (userData && userData.scope === "admin") {
+			return res.json({
+		  		success: true,
+		  		message: true
+			});
+	  	}
+	  	throw Error("Access Denied");
+	} catch (error) {
+	  	// Access Denied
+	  	return res.status(401).json({ success: false, message: error });
+	}
+};
+  
+
 module.exports = {
     registration,
     login,
-    getAllUsers
+    getAllUsers,
+	message
 };
